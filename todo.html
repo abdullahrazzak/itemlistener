@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5c0f1d8cee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="todolist.css">
+</head>
+
+<body>
+    <div class="color">
+
+        <h1>TO-DO LIST</h1>
+        <input type="text" placeholder="Enter your task" name="" id="input" class="in">
+        <div class="h">
+
+            <h1></h1>
+            <ul></ul>
+        </div>
+        <div class="l">clear all <i class="fa-solid fa-trash"></i></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $("#input").change(function () {
+                var input = $(this).val()
+                $("ul").append('<li><span class="s"><i class="fa-regular fa-circle-check"></i></span>' + input + '<span class="d"><i class="fa-solid fa-trash"></i></span>')
+                $(this).val("")
+            })
+            $(".l").on('click', function (e) {
+                $("li").fadeOut(500, function () {
+                    $(this).remove();
+                });
+            });
+            $("ul").on('click', ".d", function (e) {
+                e.stopPropagation();
+                $(this).closest("li").fadeOut(200, function () {
+                    $(this).remove();
+
+                });
+
+            });
+            $('ul').on('click', '.s', function () {
+                $(this).parent().toggleClass('strike');
+            });
+
+        })
+
+    </script>
+    </span>
+
+</body>
+
+</html>
